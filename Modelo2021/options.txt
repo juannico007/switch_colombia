@@ -1,0 +1,7 @@
+--verbose
+--stream-solver
+--sorted-output
+--solver gurobi
+--save-expression AvailableReserveCapacity CapacityRequirements
+--spinning-requirement-rule 3+5
+--unit-contingency

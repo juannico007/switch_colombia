@@ -1,0 +1,2 @@
+--scenario-name hidro_nino --outputs-dir outputs/hidro_nino --inputs-dir inputs/hidro_nino
+--scenario-name hidro_normal --outputs-dir outputs/hidro_normal --inputs-dir inputs/hidro_normal 
