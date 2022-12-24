@@ -2,6 +2,7 @@ import csv
 import datetime
 import openpyxl
 import pandas as pd
+from openpyxl import Workbook
    
 importedfile = openpyxl.load_workbook(filename = 'DemandaZonas.xlsx', read_only = True, keep_vba = False)
 tabnames = importedfile.sheetnames 
@@ -155,7 +156,12 @@ for z in range(15):         #15 zonas
             val=val+1
             final[2].append(zondmq[z][y]*horaData[z+1][x+1])
 
-from openpyxl import Workbook
+##########################################################################
+read_file = pd.read_excel ('DemandaZonas.xlsx', sheet_name='timeseries')
+Frame=pd.DataFrame([read_file], columns = ["TIMESERIES", "Ts_period", "Ts_duration_of_tp", "Ts_num_of_tps", "Ts_scale_to_period"])
+Frame.to_csv ('timeseries.csv', index = None, header=True)
+
+##########################################################################
 
 # Create file
 wb = Workbook()
