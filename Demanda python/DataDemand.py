@@ -124,8 +124,8 @@ q=[[sum(x)/3 for x in zip(month[0], month[1], month[2])],
 
 # Condiciones climáticas similares
 # Q1	Ene, Feb, Mar
-# Q2	Abr, Nov, Dic
-# Q3	Ago, Sept, Oct
+# Q2	Abr, Dic
+# Q3	Ago, Sept, Oct, Nov
 # Q4	May, Jun, Jul
 
 promm=[[] for x in range(4)]
@@ -157,11 +157,58 @@ for z in range(15):         #15 zonas
             final[2].append(zondmq[z][y]*horaData[z+1][x+1])
 
 ##########################################################################
-read_file = pd.read_excel ('DemandaZonas.xlsx', sheet_name='timeseries')
-Frame=pd.DataFrame([read_file], columns = ["TIMESERIES", "Ts_period", "Ts_duration_of_tp", "Ts_num_of_tps", "Ts_scale_to_period"])
-Frame.to_csv ('timeseries.csv', index = None, header=True)
+#Creacion del archivo timeseries de input de switch
+read_file = pd.read_excel ('DemandaZonas.xlsx', sheet_name='timeseries', names=["TIMESERIES", "Ts_period", "Ts_duration_of_tp", "Ts_num_of_tps", "Ts_scale_to_period"])
+read_file.to_csv ('timeseries.csv', index = None, header=True)
 
 ##########################################################################
+
+##########################################################################
+read_file = pd.read_excel('DemandaZonas.xlsx', sheet_name='timepoints')
+read_file = read_file.iloc[:, [1, 2]]
+timestamp = []
+
+for index, row in read_file.iterrows():
+    tp = row['Unnamed: 1']
+    #Parte el tp en año, cuartil, hora
+    tp = tp.split("_")
+    #Se obtiene el año
+    year = "20"+tp[0]
+    #Se obtiene el cuartil
+    q = tp[1]
+    #Con el numero del cuartil se obiene el mes
+    #Para el primer cuartil Ene, Feb, Mar
+    if q == 1:
+        month = "01"
+    #Para el segundo cuartil Abr, Dic
+    elif q == 2:
+        month = "04"
+    #Para el tercer cuartil Ago, Sept, Oct, Nov
+    elif q == 3:
+        month = "08"
+    #Para el ultimo cuartil May, Jun, Jul
+    else:
+        month = "05"      
+    #Utilizamos el primer dia del cuartil como medición
+    day = "01"
+    #Obtenemos la hora
+    hour = tp[2]
+    if len(hour) == 1:
+        hour = "0" + hour
+    
+    #Concatenamos para tener el timestamp
+    timestamp.append(year + month + day + hour)
+
+#Añado los timestamps como una columna
+read_file["timestamp"] = timestamp
+#Nombra columnas
+read_file.columns = ["timepoint_id", "timeseries", "timestamp"]
+#Cambia de orden al de switch
+read_file=read_file.reindex(columns=["timepoint_id", "timestamp", "timeseries"])
+read_file.to_csv ('timepoints.csv', index = None, header=True)
+
+##########################################################################
+
 
 # Create file
 wb = Workbook()
