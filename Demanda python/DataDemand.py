@@ -159,7 +159,7 @@ for z in range(15):         #15 zonas
 ##########################################################################
 #Creacion del archivo timeseries de input de switch
 read_file = pd.read_excel ('DemandaZonas.xlsx', sheet_name='timeseries', names=["TIMESERIES", "Ts_period", "Ts_duration_of_tp", "Ts_num_of_tps", "Ts_scale_to_period"])
-read_file.to_csv ('timeseries.csv', index = None, header=True)
+read_file.to_csv('timeseries.csv', index = None, header=True)
 
 ##########################################################################
 
