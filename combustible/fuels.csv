@@ -1,0 +1,11 @@
+,fuel,co2_intensity,upstream_co2_intensity,gen_overnight_costs
+0,GASNACIO,0.059,.,.
+1,GASIMPOR,0.059,.,.
+2,ACPM,0.078,.,.
+3,CARBON,0.093,.,.
+4,COMBUSTOLEO,0.085,.,.
+5,MGYLCENT,.,.,.
+6,GAS-YOPAL,0.060,.,.
+7,NONE,0,.,.
+8,GLP,0.071,.,.
+9,BIOMASA,.,.,.
