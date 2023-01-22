@@ -118,15 +118,15 @@ for m in range(12):
 
 #Mese
 q=[[sum(x)/3 for x in zip(month[0], month[1], month[2])],
-   [sum(x)/3 for x in zip(month[3], month[10], month[11])],
-   [sum(x)/3 for x in zip(month[7], month[8], month[9])],
-   [sum(x)/3 for x in zip(month[4], month[5], month[6])]]
+   [sum(x)/3 for x in zip(month[3], month[4], month[5])],
+   [sum(x)/3 for x in zip(month[6], month[7], month[8])],
+   [sum(x)/3 for x in zip(month[9], month[10], month[11])]]
 
 # Condiciones climáticas similares
 # Q1	Ene, Feb, Mar
-# Q2	Abr, Dic
-# Q3	Ago, Sept, Oct, Nov
-# Q4	May, Jun, Jul
+# Q2	Abr, May
+# Q3	Jun, Jul, Ago, 
+# Q4	Sept, Oct, Nov
 
 promm=[[] for x in range(4)]
 for qfila in range(4):  #4 cuartiles

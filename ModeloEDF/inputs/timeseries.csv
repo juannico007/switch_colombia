@@ -1,4 +1,5 @@
-TIMESERIES,Ts_period,Ts_duration_of_tp,Ts_num_of_tps,Ts_scale_to_period
+TIMESERIES,ts_period,ts_duration_of_tp,ts_num_tps,ts_scale_to_period
+2020_Q1,2020,1,24,76.09
 2020_Q2,2020,1,24,76.09
 2020_Q3,2020,1,24,76.09
 2020_Q4,2020,1,24,76.09
